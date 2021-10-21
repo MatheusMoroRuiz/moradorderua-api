@@ -8,15 +8,15 @@ app.use(express.json());
 app.use(morgan("combined"));
 
 var usuarios = require("./routes/usuarios");
-var produto = require("./routes/produtos");
-var categoria = require("./routes/categorias");
+var tipoUsuario = require("./routes/tipoUsuario");
+var telefone = require("./routes/telefone");
 
 app.use("/usuarios", usuarios);
-app.use("/produtos", produto);
-app.use("/categorias", categoria);
+app.use("/tipousuario", tipoUsuario);
+app.use("/telefone", telefone);
 
 app.get("/", function (req, res) {
-  res.send("VENDAS API");
+  res.send("MORADOR DE RUA - API");
 });
 
 database.sync().then(() => {
