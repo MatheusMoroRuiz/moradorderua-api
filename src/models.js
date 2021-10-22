@@ -124,6 +124,31 @@ const Doacao = database.define("doacao", {
   }
 });
 
+const Ong = database.define("ong", {
+  id:{
+    type: Sequelize.UUID,
+    defaultValue: Sequelize.UUIDV1,
+    primaryKey: true
+  },
+  nome:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  descricao:{
+    type: Sequelize.TEXT,
+    allowNull: false
+  },
+  telefone:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  endereco:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+
+});
+
 Usuario.hasMany(Relato);
 Relato.belongsTo(Usuario);
 
@@ -146,5 +171,6 @@ module.exports = {
   Telefone,
   TipoUsuario,
   Doacao,
-  database
+  database,
+  Ong
 };
