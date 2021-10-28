@@ -35,16 +35,31 @@ const Relato = database.define("relato", {
   },
   sexo:{
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+      notEmpty: {
+        msg: "Preencher o campo sexo"
+      }
+    }
   },
   condicaoFisica:{
       type: Sequelize.TEXT,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Preencher o campo de condições físicas"
+        }
+      }
   },
   caracteristicas:{
       type: Sequelize.TEXT,
-      allowNull: false
+      allowNull: false,
+      validate: {
+        notEmpty: {
+          msg: "Preencher o campo de características"
+        }
   }
+}
 });
 
 const Endereco = database.define("endereco", {
