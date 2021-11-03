@@ -1,4 +1,5 @@
 var express = require("express");
+const jwt = require("jsonwebtoken");
 const auth = require("../auth");
 const { Usuario } = require("../models");
 var router = express.Router();
@@ -56,5 +57,32 @@ router.delete("/:id", async function (req, res) {
     res.status(500).send({ erro: e.message });
   }
 });
+
+router.post("/login", async function(req, res) {
+
+  try{
+    if(!req.body.email || !req.body.senha)
+    throw new Error("E-mail ou senha inválidos")
+
+    const usuario = await Usuario.findOne({
+      where: {
+        email: req.body.email,
+        senha: req.body.senha
+      }
+    });
+
+    if(usuario == null) 
+      throw new Error("E-mail ou senha inválidos");
+
+      const token = jwt.sign({ id: usuario.id }, process.env.SECRET, {
+        expiresIn: 300, 
+      });
+
+      return res.send({ auth: true, token: token})
+  }
+  catch (e){
+    res.status(500).send({erro: e.message});
+  }
+})
 
 module.exports = router;
