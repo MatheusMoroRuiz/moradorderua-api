@@ -1,8 +1,9 @@
 var express = require("express");
+const auth = require("../auth");
 const { TipoUsuario, Usuario } = require("../models");
 var router = express.Router();
 
-router.get("/", async function (req, res) {
+router.get("/", auth, async function (req, res) {
   res.send(await TipoUsuario.findAll());
 });
 

@@ -1,3 +1,7 @@
+require("dotenv-safe").config();
+
+process.env.SECRET
+
 var express = require("express");
 var morgan = require("morgan");
 var cors = require("cors");
@@ -26,7 +30,7 @@ app.get("/", function (req, res) {
 });
 
 database.sync().then(() => {
-  app.listen(3000, function () {
-    console.log("Servidor rodando na porta 3000");
+  app.listen(process.env.PORT, function () {
+    console.log(`Servidor rodando na porta ${process.env.PORT}`);
   });
 });
