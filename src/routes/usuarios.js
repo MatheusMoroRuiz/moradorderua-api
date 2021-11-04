@@ -17,6 +17,18 @@ router.post("/", async function (req, res) {
   }
 });
 
+router.get("/me", auth, async function (req, res) {
+  console.log(req);
+  var usuario = await Usuario.findByPk(req.usuarioId);
+  try {
+    if (usuario == null) throw new Error("Usuário não existe");
+
+    res.send(usuario);
+  } catch (e) {
+    res.status(500).send({ erro: e.message });
+  }
+});
+
 router.get("/:id", async function (req, res) {
   var usuario = await Usuario.findByPk(req.params.id);
   try {
@@ -83,6 +95,6 @@ router.post("/login", async function(req, res) {
   catch (e){
     res.status(500).send({erro: e.message});
   }
-})
+});
 
 module.exports = router;

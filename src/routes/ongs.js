@@ -7,7 +7,7 @@ router.get("/", auth, async function (req, res) {
   res.send(await Ong.findAll());
 });
 
-router.post("/", async function (req, res) {
+router.post("/", auth, async function (req, res) {
   try {
     var ong = await Ong.create(req.body);
     res.send(ong);
@@ -16,7 +16,7 @@ router.post("/", async function (req, res) {
   }
 });
 
-router.get("/:id", async function (req, res) {
+router.get("/:id", auth, async function (req, res) {
   var ong = await Ong.findByPk(req.params.id);
   try {
     if (ong == null) throw new Error("Ong não existe");
@@ -27,7 +27,7 @@ router.get("/:id", async function (req, res) {
   }
 });
 
-router.put("/:id", async function (req, res) {
+router.put("/:id", auth, async function (req, res) {
   var ong = await Ong.findByPk(req.params.id);
 
   try {
@@ -44,7 +44,7 @@ router.put("/:id", async function (req, res) {
   }
 });
 
-router.delete("/:id", async function (req, res) {
+router.delete("/:id", auth, async function (req, res) {
   var ong = await Ong.findByPk(req.params.id);
   try {
     if (ong == null) throw new Error("Ong não existe");
