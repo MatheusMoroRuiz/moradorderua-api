@@ -87,7 +87,7 @@ router.post("/login", async function(req, res) {
       throw new Error("E-mail ou senha inválidos");
 
       const token = jwt.sign({ id: usuario.id }, process.env.SECRET, {
-        expiresIn: 300, 
+        expiresIn: 1500, 
       });
 
       return res.send({ auth: true, token: token})
