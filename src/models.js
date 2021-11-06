@@ -21,6 +21,10 @@ const Usuario = database.define("usuario", {
       type: Sequelize.STRING,
       allowNull: false
   },
+  telefone:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   senha:{
       type: Sequelize.STRING,
       allowNull: false, 
@@ -94,18 +98,6 @@ const Endereco = database.define("endereco", {
   }
 });
 
-const Telefone = database.define("telefone", {
-  id:{
-      type: Sequelize.UUID,
-      defaultValue: Sequelize.UUIDV1,
-      primaryKey: true
-  },
-  numero:{
-      type: Sequelize.STRING,
-      allowNull: false
-  }
-});
-
 const TipoUsuario = database.define("tipoUsuario", {
   id:{
       type: Sequelize.INTEGER,
@@ -173,9 +165,6 @@ TipoUsuario.hasMany(Usuario);
 Usuario.hasMany(Doacao);
 Doacao.belongsTo(Usuario);
 
-Usuario.hasMany(Telefone);
-Telefone.belongsTo(Usuario);
-
 Relato.belongsTo(Endereco);
 Endereco.hasOne(Relato);
 
@@ -183,7 +172,6 @@ module.exports = {
   Usuario,
   Relato,
   Endereco,
-  Telefone,
   TipoUsuario,
   Doacao,
   database,
