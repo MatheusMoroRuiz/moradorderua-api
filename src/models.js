@@ -90,11 +90,10 @@ const Endereco = database.define("endereco", {
   },
   longitude:{
       type: Sequelize.DECIMAL,
-      allowNull: false
+
   },
   latitude:{
-      type: Sequelize.DECIMAL,
-      allowNull: false
+      type: Sequelize.DECIMAL
   }
 });
 

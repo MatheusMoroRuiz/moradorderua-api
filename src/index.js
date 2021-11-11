@@ -17,11 +17,13 @@ var usuarios = require("./routes/usuarios");
 var tipoUsuario = require("./routes/tipoUsuario");
 var ong = require("./routes/ongs");
 var relato = require("./routes/relato");
+var endereco = require("./routes/endereco");
 
 app.use("/usuarios", usuarios);
 app.use("/usuario_tipos", tipoUsuario);
 app.use("/ongs", ong);
 app.use("/relatos", relato);
+app.use("/endereco", endereco);
 
 app.get("/", function (req, res) {
   res.send("MORADOR DE RUA - API");
