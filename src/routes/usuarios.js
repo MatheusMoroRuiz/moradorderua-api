@@ -11,7 +11,11 @@ router.get("/", auth, async function (req, res) {
 router.post("/", async function (req, res) {
   try {
     var usuario = await Usuario.create(req.body);
-    res.send(usuario);
+    const token = jwt.sign({ id: usuario.id }, process.env.SECRET, {
+      expiresIn: 1000*60*60*24, 
+    });
+
+    return res.send({ auth: true, token: token, usuario})
   } catch (e) {
     res.status(500).send(e);
   }
@@ -87,7 +91,7 @@ router.post("/login", async function(req, res) {
       throw new Error("E-mail ou senha inválidos");
 
       const token = jwt.sign({ id: usuario.id }, process.env.SECRET, {
-        expiresIn: 1500, 
+        expiresIn: 1000*60*60*24, 
       });
 
       return res.send({ auth: true, token: token})
