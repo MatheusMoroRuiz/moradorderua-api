@@ -88,11 +88,11 @@ const Endereco = database.define("endereco", {
       type: Sequelize.STRING,
       allowNull: false
   },
-  longitude:{
+  lat:{
       type: Sequelize.DECIMAL,
 
   },
-  latitude:{
+  lng:{
       type: Sequelize.DECIMAL
   }
 });

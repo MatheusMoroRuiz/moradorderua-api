@@ -1,6 +1,6 @@
 var express = require("express");
 const auth = require("../auth");
-const { Relato } = require("../models");
+const { Relato, Endereco } = require("../models");
 var router = express.Router();
 
 router.get("/", auth, async function (req, res) {
@@ -9,7 +9,7 @@ router.get("/", auth, async function (req, res) {
 
 router.post("/", async function (req, res) {
   try {
-    var relato = await Relato.create(req.body);
+    var relato = await Relato.create(req.body, {include:[Endereco]});
     res.send(relato);
   } catch (e) {
     res.status(500).send(e);

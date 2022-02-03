@@ -9,7 +9,7 @@
     "start": "node ./src/index localhost 3000",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Samuel Nogueira <samuelgpnogueira@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
@@ -22,6 +22,7 @@
     "sqlite3": "^5.0.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.12"
-  }
+    "nodemon": "^2.0.15"
+  },
+  "repository": "https://github.com/MatheusMoroRuiz/moradorderua-api.git"
 }
