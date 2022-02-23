@@ -140,16 +140,55 @@ const Ong = database.define("ong", {
     type: Sequelize.STRING,
     allowNull: false
   },
-  descricao:{
+  cnpj:{
+    type: Sequelize.STRING,
+    allowNull: false
+
+  },
+  ceps:{
+    type: Sequelize.STRING,
+    allowNull: false
+
+  },
+  rua:{
     type: Sequelize.TEXT,
     allowNull: false
+
   },
+  numero:{
+    type: Sequelize.STRING,
+    allowNull: false
+
+  },
+  bairro:{
+    type: Sequelize.TEXT,
+    allowNull: false
+
+  },
+  cidade:{
+    type: Sequelize.TEXT,
+    allowNull: false
+
+  },
+  uf:{
+    type: Sequelize.TEXT,
+    allowNull: false
+
+  },    
   telefone:{
+    type: Sequelize.STRING,
+    allowNull: true
+  },
+  celular:{
+    type: Sequelize.STRING,
+    allowNull: true
+  },  
+  email:{
     type: Sequelize.STRING,
     allowNull: false
   },
-  endereco:{
-    type: Sequelize.STRING,
+  descricao:{
+    type: Sequelize.TEXT,
     allowNull: false
   },
 
