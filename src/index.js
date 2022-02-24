@@ -5,7 +5,7 @@ process.env.SECRET
 var express = require("express");
 var morgan = require("morgan");
 var cors = require("cors");
-const { database } = require("./models");
+const { database, Ongs } = require("./models");
 var app = express();
 
 app.use(express.json());
@@ -15,13 +15,13 @@ app.use(morgan("combined"));
 
 var usuarios = require("./routes/usuarios");
 var tipoUsuario = require("./routes/tipoUsuario");
-var ong = require("./routes/ongs");
+var ongs = require("./routes/ongs");
 var relato = require("./routes/relato");
 var endereco = require("./routes/endereco");
 
 app.use("/usuarios", usuarios);
 app.use("/usuario_tipos", tipoUsuario);
-app.use("/ongs", ong);
+app.use("/ongs", ongs);
 app.use("/relatos", relato);
 app.use("/endereco", endereco);
 

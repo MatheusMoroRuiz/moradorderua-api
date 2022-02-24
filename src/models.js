@@ -130,7 +130,7 @@ const Doacao = database.define("doacao", {
   }
 });
 
-const Ong = database.define("ong", {
+const Ongs = database.define("ongs", {
   id:{
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV1,
@@ -185,7 +185,8 @@ const Ong = database.define("ong", {
   },  
   email:{
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    isEmail: true
   },
   descricao:{
     type: Sequelize.TEXT,
@@ -213,5 +214,5 @@ module.exports = {
   TipoUsuario,
   Doacao,
   database,
-  Ong
+  Ongs
 };

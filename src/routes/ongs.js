@@ -1,15 +1,15 @@
 var express = require("express");
 const auth = require("../auth");
-const { Ong } = require("../models");
+const { Ongs } = require("../models");
 var router = express.Router();
 
-router.get("/", auth, async function (req, res) {
-  res.send(await Ong.findAll());
+router.get("/", async function (req, res) {
+  res.send(await Ongs.findAll());
 });
 
 router.post("/", auth, async function (req, res) {
   try {
-    var ong = await Ong.create(req.body);
+    var ong = await Ongs.create(req.body);
     res.send(ong);
   } catch (e) {
     res.status(500).send(e);
@@ -17,7 +17,7 @@ router.post("/", auth, async function (req, res) {
 });
 
 router.get("/:id", auth, async function (req, res) {
-  var ong = await Ong.findByPk(req.params.id);
+  var ong = await Ongs.findByPk(req.params.id);
   try {
     if (ong == null) throw new Error("Ong não existe");
 
@@ -28,7 +28,7 @@ router.get("/:id", auth, async function (req, res) {
 });
 
 router.put("/:id", auth, async function (req, res) {
-  var ong = await Ong.findByPk(req.params.id);
+  var ong = await Ongs.findByPk(req.params.id);
 
   try {
     if (ong == null) throw new Error("Ong não existe");
@@ -45,7 +45,7 @@ router.put("/:id", auth, async function (req, res) {
 });
 
 router.delete("/:id", auth, async function (req, res) {
-  var ong = await Ong.findByPk(req.params.id);
+  var ong = await Ongs.findByPk(req.params.id);
   try {
     if (ong == null) throw new Error("Ong não existe");
 
