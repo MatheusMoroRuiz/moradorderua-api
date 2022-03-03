@@ -63,6 +63,7 @@ const Relato = database.define("relato", {
           msg: "Preencher o campo de características"
         }
   }
+
 }
 });
 
@@ -89,11 +90,10 @@ const Endereco = database.define("endereco", {
       allowNull: false
   },
   lat:{
-      type: Sequelize.DECIMAL,
-
+      type: Sequelize.DECIMAL(13,8)
   },
   lng:{
-      type: Sequelize.DECIMAL
+      type: Sequelize.DECIMAL(13,8)
   }
 });
 
@@ -138,41 +138,84 @@ const Ongs = database.define("ongs", {
   },
   nome:{
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
   },
   cnpj:{
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
 
   },
   ceps:{
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
 
   },
   rua:{
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
 
   },
   numero:{
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
+
+    
+    
 
   },
   bairro:{
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
 
   },
   cidade:{
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
 
   },
   uf:{
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
 
   },    
   telefone:{
@@ -186,11 +229,24 @@ const Ongs = database.define("ongs", {
   email:{
     type: Sequelize.STRING,
     allowNull: false,
-    isEmail: true
+    
+    validate: {
+      isEmail: {
+        msg: "Preencha o E-mail corretamente"
+      },
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
   },
   descricao:{
     type: Sequelize.TEXT,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      notEmpty: {
+        msg: "Preencher todos os campos necessários"
+      }
+    }
   },
 
 });
