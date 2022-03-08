@@ -62,7 +62,12 @@ const Relato = database.define("relato", {
         notEmpty: {
           msg: "Preencher o campo de características"
         }
-  }
+  },
+ /* data:{
+    type: Sequelize.DATETIME,
+    defaultValue: Sequelize.NOW
+  }*/
+
 
 }
 });
